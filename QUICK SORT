@@ -1,0 +1,103 @@
+//quick sort
+//by-PANCHANG BHARDWAJ
+#include<iostream.h>
+#include<conio.h>
+
+void  main()
+{           clrscr();
+	   int a[20],loc,key,flag,temp,gap=2,n,f,top=-1,stacku[20],stackl[20],up,lo;
+	   int start=0,last,test1=1,test2=1;
+	   cout<<"enter how many element to enter \n";
+	   cin>>n;
+	   for(int i=0;i<n;i++)
+	   {    cout<<"\nenter "<<i+1<<" ";
+		cin>>a[i];
+	   }
+	   up=n-1;
+	   lo=0;
+	   loc=0;
+	   last=n-1;
+    do{
+	flag=2;
+	  up=last;
+	  lo=start;
+	  loc=start;
+	     key=a[lo];
+	   do{
+	      if(flag%2==0)
+	      {
+	       for( i=up;i>loc;i--)
+	       {
+		if(a[i]<key)
+
+		{ f=loc;
+		 temp=a[loc];
+		 a[loc]=a[i];
+		 a[i]=temp;
+		 up=i;
+		 loc=i;
+		 cout<<"\nkey 1 loop "<<key;
+		 cout<<"\nfrom "<<f<<" to "<<loc<<"  up "<<up<<" lo "<<lo;
+		 break;}
+	       else
+		{
+		cout<<"\nelse 1 "<<i;
+		test1=0;
+		}
+		}
+	       flag++;
+		}
+
+	       if(flag%2!=0)
+	      {
+
+	       for( i=lo;i<loc;i++)
+	       {
+		if(a[i]>key)
+		{ f=loc;
+		 temp=a[loc];
+		 a[loc]=a[i];
+		 a[i]=temp;
+		 lo=i;
+		 loc=i;
+		  cout<<"\n key  2 loop"<<key;
+
+		  cout<<"\nfrom "<<f<<" to "<<loc<<"  up "<<up<<" lo "<<lo;
+		 break;
+		}
+		  else
+		{ cout<<"\nelse 2 "<<i;
+	     //	test2=0;
+		}
+		}
+	       flag++;
+		}
+	       gap=up-lo;
+	       if(test1==0||test2==0)
+	       {
+	       gap=1;
+	       }
+		}while(gap!=1);
+	     if((loc-start)>1)
+	     {top++;
+	     stackl[top]=start;
+	     stacku[top]=loc-1;
+
+	     }
+	     if((last-loc)>1)
+	     {top++;
+	     stackl[top]=loc+1;
+	     stacku[top]=last;
+	    }
+	    start=stackl[top];
+	    last=stacku[top];
+	    top--;
+	 }while(top!=-2);
+	      for( i=0;i<n;i++)
+	      {
+	      cout<<" \n"<<a[i];
+	      }
+
+      getch();
+
+}
